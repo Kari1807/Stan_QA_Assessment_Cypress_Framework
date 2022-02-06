@@ -1,0 +1,42 @@
+{
+  "name": "stan_qa_challange_cypress",
+  "version": "1.0.0",
+  "description": "The CYPRESS BDD (Gherkin) test automation framework for Stan QA Technical Challange.",
+  "main": "index.js",
+  "scripts": {
+    "cypress:run:local": "npx cypress run",
+    "cypress:open:local": "npx cypress open",
+    "generate-report": "node cucumber-html-report.js",
+    "clean-report": "npx rimraf cypress/cucumber-json cypress/videos cypress/screenshots reports",
+    "cypress:run:generate-report": "npm run cypress:run:local && npm run generate-report",
+    "cypress:run:tags": "npx cypress-tags run -e TAGS=\"@Checkbox\"",
+    "cypress:run:feature": "npx cypress run --spec \"cypress/integration/Features/herokuapp.feature\""
+  },
+  "keywords": [
+    "cypress",
+    "Stan",
+    "BDD",
+    "Gherkin"
+  ],
+  "author": "Karishma Srivastava",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^9.1.1",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "cypress-cucumber-preprocessor": "^4.3.0",
+    "cypress-file-upload": "^5.0.8",
+    "multiple-cucumber-html-reporter": "^1.18.3"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "step_definitions": "cypress/support/step_definitions",
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
+  }
+}
